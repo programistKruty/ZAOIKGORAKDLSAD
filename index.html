@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaokrąglanie Liczby</title>
+    <style>
+        .result-container {
+            margin-top: 20px;
+        }
+        .result-container div {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zaokrąglanie liczby</h1>
+
+    <label for="inputNumber">Wpisz liczbę:</label>
+    <input type="number" id="inputNumber" step="any">
+    <button onclick="roundNumber()">Zaokrągl</button>
+
+    <div class="result-container">
+        <div id="roundUp">Zaokrąglenie w górę: </div>
+        <div id="roundDown">Zaokrąglenie w dół: </div>
+        <div id="roundNearest">Zaokrąglenie do najbliższej liczby całkowitej: </div>
+        <div id="removeDecimal">Usuwanie części ułamkowej: </div>
+    </div>
+
+    <script>
+        function roundNumber() {
+            let number = parseFloat(document.getElementById('inputNumber').value);
+            if (isNaN(number)) {
+                alert("Proszę wpisać poprawną liczbę.");
+                return;
+            }
+
+            let roundUp = Math.ceil(number);
+            document.getElementById('roundUp').innerText = 'Zaokrąglenie w górę: ' + roundUp;
+
+            let roundDown = Math.floor(number);
+            document.getElementById('roundDown').innerText = 'Zaokrąglenie w dół: ' + roundDown;
+
+            let roundNearest = Math.round(number);
+            document.getElementById('roundNearest').innerText = 'Zaokrąglenie do najbliższej liczby całkowitej: ' + roundNearest;
+
+            let removeDecimal = Math.trunc(number);
+            document.getElementById('removeDecimal').innerText = 'Usuwanie części ułamkowej: ' + removeDecimal;
+        }
+    </script>
+</body>
+</html>
